@@ -1,22 +1,30 @@
 console.clear();
 
 let singleMeal = document.getElementById('single-meal');
+let mealsWrapper = document.getElementById('meals');
 let random = document.getElementById('random');
 
 const submit = document.getElementById('submit'),
       search = document.getElementById('search');
 
 // Generate meals by search
-function getMealFromSearch(e){
+async function getMealFromSearch(e){
    e.preventDefault();
    let searchTerm = search.value;
+   mealsWrapper.innerHTML = '';
    singleMeal.innerHTML = '';
 
    if(searchTerm.trim()){
     
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
-    .then(response => response.json())
-    .then(data => console.log(data))
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
+    let data = await response.json();
+    let meals = data.meals;
+    
+    mealsWrapper.innerHTML = meals.map(meal => {
+      return `
+      <div>${meal.strMeal}</div>
+      `
+    }).join('')
 
    } else {
     alert('Please type in a meal or ingredient');
