@@ -11,7 +11,28 @@
 </head>
 
 <body>
-    <div class="container">
+    <main>
+        <div class="search-wrapper">
+            <h1>MealFinder</h1>
+            <form class="flex" id="submit">
+                <input type="text" id="search" placeholder="Search for meals or keywords" />
+                <button class="search-btn" type="submit">
+                    Search
+                    <!-- <i class="fas fa-search"></i> -->
+                </button>
+            </form>
+            <button class="random-btn" id="random">
+                Get a random meal suggestion
+            </button>
+        </div>
+        <div class="results-wrapper">
+            <div id="result-heading"></div>
+            <div id="meals" class="meals"></div>
+            <div id="single-meal" class="single-meal"></div>
+        </div>
+    </main>
+
+    <!-- <div class="container">
         <h1>Meal Finder</h1>
         <div class="flex">
             <form class="flex" id="submit">
@@ -28,7 +49,7 @@
         <div id="result-heading"></div>
         <div id="meals" class="meals"></div>
         <div id="single-meal" class="single-meal"></div>
-    </div>
+    </div> -->
 
     <script src="script.js"></script>
 </body>

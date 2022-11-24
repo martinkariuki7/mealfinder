@@ -24,7 +24,11 @@ async function getMealFromSearch(e){
       let mealLink = document.createElement('div');
       mealLink.classList.add('meal');
       mealLink.innerHTML = `
-      <h2>${meal.strMeal}</h2>
+      <figure>
+      <div class="color-overlay"></div>
+      <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+      <figcaption>${meal.strMeal}</figcaption>
+      </figure>
       `
       mealsWrapper.appendChild(mealLink);
 
