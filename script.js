@@ -12,6 +12,7 @@ async function getMealFromSearch(e){
    e.preventDefault();
    let searchTerm = search.value;
    mealsWrapper.innerHTML = '';
+   hideSingleMealAnimation();
    singleMeal.innerHTML = '';
 
    if(searchTerm.trim()){
@@ -77,14 +78,44 @@ function addMealToDom(meal){
   }
 
   singleMeal.innerHTML = 
-    `<h1>${meal.strMeal}</h1>
+    `<button onclick="hideSingleMealAnimation()"> ← Back </button>
+    <h1>${meal.strMeal}</h1>
     ${mealMedia}
     <ul>
       ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
     </ul>
     <p>${meal.strInstructions}</p>
     `
+    
+   showSingleMealsAnimation()
+    
   
+}
+
+//Hide single meals animation
+function hideSingleMealAnimation(){
+  gsap.to('.single-meal', {
+    display:'none',
+    opacity:'0',
+    ease: 'power1',
+    duration:'.3'
+    });
+
+    document.body.style.overflowY = 'scroll'
+}
+
+// Show single meals animation
+function showSingleMealsAnimation(){
+ let tl = gsap.timeline();
+
+    tl.to('.single-meal', {
+        display:'flex',
+        opacity:'1',
+        ease: 'power1',
+        duration:'.3'
+    })
+    window.scrollTo({ top: 0 });
+    document.body.style.overflowY = 'hidden'
 }
 
 // Make YouTube videos embeddable

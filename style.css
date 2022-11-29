@@ -46,9 +46,8 @@ main .results-wrapper{
     width: 60%;
     min-height: 100vh;
     padding: 4vw;
+    overflow-y: scroll;
 }
-
-
 /**/
 
 .container {
@@ -60,11 +59,9 @@ main .results-wrapper{
     justify-content: center;
     text-align: center;
 }
-
 .flex {
     display: flex;
 }
-
 input,
 button {
     border: 1px solid #000;
@@ -141,40 +138,19 @@ input[type="text"]:focus {
     font-size: 14px;
 }
 
-/* .meal img {
-    width: 100%;
-    height: 100%;
-    border: 4px #fff solid;
-    border-radius: 2px;
-}
-
-.meal-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s ease-in;
-    opacity: 0;
-} */
-
-
-
 .single-meal {
-    margin: 30px auto;
-    width: 70%;
+    width: 100%;
+    position: absolute;
+    inset: 0 0 auto auto;
+    padding: 2rem 10vw;
+    background-color: honeydew;
+    z-index: 3;
+    min-height: 100vh;
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    justify-content: center;
 }
-
-/* .single-meal img {
-    width: 300px;
-    margin: 15px;
-    border: 4px #fff solid;
-    border-radius: 2px;
-} */
 
 .single-meal-info {
     margin: 20px;
@@ -188,11 +164,6 @@ input[type="text"]:focus {
     letter-spacing: 0.5px;
     line-height: 1.5;
 }
-
-/* .single-meal img{
-    width: auto;
-    max-height: 300px;
-} */
 
 .single-meal ul {
     padding-left: 0;
