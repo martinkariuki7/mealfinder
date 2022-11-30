@@ -14,6 +14,8 @@ async function getMealFromSearch(e){
    mealsWrapper.innerHTML = '';
    hideSingleMealAnimation();
    singleMeal.innerHTML = '';
+   document.getElementById('search-alert').innerHTML = ''
+   document.getElementById('search-alert').style.display = 'none'
 
    if(searchTerm.trim()){
     
@@ -21,22 +23,27 @@ async function getMealFromSearch(e){
     let data = await response.json();
     let meals = data.meals;
     
-    meals.map(meal => {
-      let mealLink = document.createElement('div');
-      mealLink.classList.add('meal');
-      mealLink.innerHTML = `
-      <figure>
-      <div class="color-overlay"></div>
-      <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
-      <figcaption>${meal.strMeal}</figcaption>
-      </figure>
-      `
-      mealsWrapper.appendChild(mealLink);
+    if(meals != null){
+        meals.map(meal => {
+        let mealLink = document.createElement('div');
+        mealLink.classList.add('meal');
+        mealLink.innerHTML = `
+        <figure>
+        <div class="color-overlay"></div>
+        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+        <figcaption>${meal.strMeal}</figcaption>
+        </figure>
+        `
+        mealsWrapper.appendChild(mealLink);
 
-      mealLink.addEventListener('click', () => {
-        addMealToDom(meal);
-      }, false)
-    })
+        mealLink.addEventListener('click', () => {
+          addMealToDom(meal);
+        }, false)
+      })
+    } else {
+      document.getElementById('search-alert').style.display = 'block'
+      document.getElementById('search-alert').innerHTML = `We have no meals in our database that match ${searchTerm}, maybe you can try searching for something different?`
+    }
 
    } else {
     alert('Please type in a meal or ingredient');
@@ -62,7 +69,7 @@ function addMealToDom(meal){
   let mealMedia = `<img src="${meal.strMealThumb}" alt="${meal.strMeal}" />`
 
   if(meal.strYoutube != null){
-    mealMedia = `<iframe width=400 height=200 src='${watchToEmbed(meal.strYoutube)}'></iframe>`
+    mealMedia = `<iframe frameBorder="0" width=100% height=400 src='${watchToEmbed(meal.strYoutube)}'></iframe>`
   }
 
   const ingredients = [];
@@ -78,7 +85,7 @@ function addMealToDom(meal){
   }
 
   singleMeal.innerHTML = 
-    `<button onclick="hideSingleMealAnimation()"> ← Back </button>
+    `<button class="back-btn" onclick="hideSingleMealAnimation()"> ← Back </button>
     <h1>${meal.strMeal}</h1>
     ${mealMedia}
     <ul>
@@ -94,7 +101,7 @@ function addMealToDom(meal){
 
 //Hide single meals animation
 function hideSingleMealAnimation(){
-  gsap.to('.single-meal', {
+  gsap.to('.single-meals-wrapper', {
     display:'none',
     opacity:'0',
     ease: 'power1',
@@ -108,7 +115,7 @@ function hideSingleMealAnimation(){
 function showSingleMealsAnimation(){
  let tl = gsap.timeline();
 
-    tl.to('.single-meal', {
+    tl.to('.single-meals-wrapper', {
         display:'flex',
         opacity:'1',
         ease: 'power1',
