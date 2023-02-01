@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css"
+      rel="stylesheet"
+    />
     <title>Meal Finder</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <div class="search-wrapper">
-            <h1>MealFinder</h1>
+      <div class="search-wrapper">
+        <h1>MealFinder</h1>
 
-            <form class="flex" id="submit">
-                <input type="text" id="search" placeholder="Search for meals or keywords" />
-                <button class="search-btn" type="submit">
-                    Search
-                    <!-- <i class="fas fa-search"></i> -->
-                </button>
-            </form>
-            <button class="random-btn" id="random">
-                Get a random meal suggestion
-            </button>
-            <div id="search-alert" class="search-alert"></div>
+        <form class="flex" id="submit">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search for meals or keywords"
+          />
+          <button class="search-btn" type="submit">
+            Search
+            <!-- <i class="fas fa-search"></i> -->
+          </button>
+        </form>
+        <button class="random-btn" id="random">
+          Get a random meal suggestion
+        </button>
+        <div id="search-alert" class="search-alert"></div>
+      </div>
+      <div class="results-wrapper">
+        <div id="result-heading"></div>
+        <div id="meals" class="meals"></div>
+        <div class="single-meals-wrapper">
+          <div id="single-meal" class="single-meal"></div>
         </div>
-        <div class="results-wrapper">
-            <div id="result-heading"></div>
-            <div id="meals" class="meals">
-                
-            </div>
-            <div class="single-meals-wrapper">
-                <div id="single-meal" class="single-meal"></div>
-            </div>
-        </div>
+      </div>
     </main>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-    <script src="script.js"></script>
-</body>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
